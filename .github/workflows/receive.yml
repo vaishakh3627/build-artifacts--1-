@@ -13,25 +13,23 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Copy Build Artifacts
-        run: |
-          mkdir -p build-artifacts
-          cp -R ../path/to/react/project/build/* build-artifacts/
-        working-directory: .
-
       - name: Configure Git
         run: |
           git config user.name "vaishakh3627"
           git config user.email "vaishakh3627@gmail.com"
-          git remote set-url origin "https://github.com/vaishakh3627/build-artifacts--1-.git"
-        working-directory: ./build-artifacts
+
+      - name: Copy Build Artifacts
+        run: |
+          mkdir -p build-artifacts
+          cp -R ../vaishakh3627/vaishakh3627/taskmanager/build/build/* 
+        working-directory: .
 
       - name: Commit and Push Artifacts to Master
         run: |
-          git checkout master
           git add .
           git commit -m "Update build artifacts"
           git push origin master
         working-directory: ./build-artifacts
+
 
 
