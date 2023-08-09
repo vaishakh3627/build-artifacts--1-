@@ -21,7 +21,8 @@ jobs:
       - name: Copy Build Artifacts
         run: |
           mkdir -p build-artifacts
-          cp -R vaishakh3627/taskmanager/build/build/* 
+          git clone --depth 1 --branch build https://github.com/vaishakh3627/taskmanager.git tmp
+          cp -R tmp/* build-artifacts/
         working-directory: .
 
       - name: Commit and Push Artifacts to Master
